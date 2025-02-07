@@ -9,7 +9,7 @@ import Foundation
 
 class MockNetworkService: NetworkServiceProtocol {
     func data<T: Decodable>(from url: URL) async throws -> T {
-        guard let filePath = Bundle.main.path(forResource: "recipes", ofType: "json") else {
+        guard let filePath = Bundle.main.path(forResource: url.absoluteString, ofType: "json") else {
             throw NSError(domain: "MockNetworkService", code: 404, userInfo: [NSLocalizedDescriptionKey: "File not found"])
         }
         

@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct FetchRecipeApp: App {
+    @StateObject private var recipeViewModel: RecipeViewModel = RecipeViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RecipeView()
+                .task {
+                    await recipeViewModel.fetchRecipes()
+                }
+                .environmentObject(recipeViewModel)
         }
     }
 }

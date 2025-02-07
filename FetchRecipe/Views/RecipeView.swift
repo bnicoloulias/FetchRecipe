@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct RecipeView: View {
+    @EnvironmentObject var recipeViewModel: RecipeViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List(recipeViewModel.recipes) { recipe in
+                VStack {
+                    Text(recipe.name)
+                }
+            }
+            .refreshable {
+                await recipeViewModel.fetchRecipes()
+            }
+            .navigationTitle("Recipes")
+        }
     }
 }
 
