@@ -8,5 +8,6 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
+    func image(from url: URL) async throws -> Data
     func data<T: Decodable>(from url: URL) async throws -> T
 }
