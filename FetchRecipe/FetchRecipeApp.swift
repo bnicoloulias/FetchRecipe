@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct FetchRecipeApp: App {
     @StateObject private var recipeViewModel: RecipeViewModel = RecipeViewModel()
+    let storageProvider = StorageProvider()
 
     var body: some Scene {
         WindowGroup {
@@ -18,6 +19,10 @@ struct FetchRecipeApp: App {
                     await recipeViewModel.fetchRecipes()
                 }
                 .environmentObject(recipeViewModel)
+                .environment(
+                    \.managedObjectContext,
+                     storageProvider.container.viewContext
+                )
         }
     }
 }
