@@ -24,4 +24,14 @@ class NetworkService: NetworkServiceProtocol {
         
         return try JSONDecoder().decode(T.self, from: data)
     }
+    
+    func image(from url: URL) async throws -> Data {
+        let (data, response) = try await session.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw URLError(.badServerResponse)
+        }
+        
+        return data
+    }
 }
