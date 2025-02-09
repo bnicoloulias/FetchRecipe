@@ -5,7 +5,7 @@
 //  Created by Bobby Nicoloulias on 2/7/25.
 //
 
-import Foundation
+import SwiftUI
 
 @MainActor
 class RecipeViewModel: ObservableObject {
@@ -27,18 +27,18 @@ class RecipeViewModel: ObservableObject {
     }
     private let networkService: NetworkServiceProtocol
     
-    init(networkService: NetworkServiceProtocol = MockNetworkService()) {
+    init(networkService: NetworkServiceProtocol = NetworkService.shared) {
         self.networkService = networkService
     }
     
     func fetchRecipes() async {
         do {
-            let recipeResponse: RecipeResponse = try await networkService.data(from: URL(string: "recipes")!)
-            //let recipeResponse: RecipeResponse = try await networkService.data(from: URL(string: "https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json")!)
+            let recipeResponse: RecipeResponse = try await networkService.data(from: URL(string: "https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json")!)
             self.recipes = recipeResponse.recipes.sorted { $0.name < $1.name }
             self.cuisines = Array(Set(recipes.map { $0.cuisine })).sorted()
             self.filteredRecipes = self.recipes
             self.selectedCuisine = nil
+            self.errorDescription = nil
         } catch NetworkServiceError.invalidURL {
             errorDescription = NetworkServiceError.invalidURL.errorDescription
         } catch NetworkServiceError.networkError(let networkError) {
