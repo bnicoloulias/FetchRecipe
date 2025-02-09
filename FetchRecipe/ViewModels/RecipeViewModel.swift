@@ -13,6 +13,7 @@ class RecipeViewModel: ObservableObject {
     @Published var filteredRecipes: [Recipe] = []
     @Published var cuisines: [String] = []
     @Published private var _selectedCuisine: String? = nil
+    @Published var errorDescription: String? = nil
     var selectedCuisine: String? {
         get { _selectedCuisine }
         set {
@@ -38,8 +39,14 @@ class RecipeViewModel: ObservableObject {
             self.cuisines = Array(Set(recipes.map { $0.cuisine })).sorted()
             self.filteredRecipes = self.recipes
             self.selectedCuisine = nil
+        } catch NetworkServiceError.invalidURL {
+            errorDescription = NetworkServiceError.invalidURL.errorDescription
+        } catch NetworkServiceError.networkError(let networkError) {
+            errorDescription = NetworkServiceError.networkError(networkError).errorDescription
+        } catch NetworkServiceError.decodingError(let decodingError) {
+            errorDescription = NetworkServiceError.decodingError(decodingError).errorDescription
         } catch {
-            print(error.localizedDescription)
+            errorDescription = error.localizedDescription
         }
     }
     
