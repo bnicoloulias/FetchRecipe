@@ -7,9 +7,32 @@
 
 import SwiftUI
 
+enum JsonType {
+    case success
+    case malformed
+    case empty
+    
+    var jsonString: String {
+        switch self {
+        case .success:
+            return "recipes"
+        case .malformed:
+            return "recipes-malformed"
+        case .empty:
+            return "recipes-empty"
+        }
+    }
+}
+
 class MockNetworkService: NetworkServiceProtocol {
+    let jsonType: JsonType
+    
+    init(jsonType: JsonType = .success) {
+        self.jsonType = jsonType
+    }
+    
     func data<T: Decodable>(from url: URL) async throws -> T {
-        guard let filePath = Bundle.main.path(forResource: url.absoluteString, ofType: "json") else {
+        guard let filePath = Bundle.main.path(forResource: jsonType.jsonString, ofType: "json") else {
             throw NetworkServiceError.invalidURL
         }
         
