@@ -13,7 +13,7 @@ struct RecipeCardView: View {
     let context: NSManagedObjectContext
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
             if let urlString = recipe.photoUrlLarge, let url = URL(string: urlString) {
                 AsyncImageView(url: url, context: context)
                     .scaledToFill()
@@ -33,7 +33,7 @@ struct RecipeCardView: View {
             }
             .padding()
         }
-        .background(Color(.systemBackground))
+        .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius))
         .shadow(radius: DrawingConstants.shadowRadius)
     }

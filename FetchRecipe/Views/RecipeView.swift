@@ -31,7 +31,7 @@ struct RecipeView: View {
                                         .foregroundColor(recipeViewModel.selectedCuisine == cuisine ? .white : .black)
                                         .padding()
                                         .background(alignment: .center) {                                         RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
-                                            .fill(recipeViewModel.selectedCuisine == cuisine ? Color.blue : Color(.systemGray5)) }
+                                            .fill(recipeViewModel.selectedCuisine == cuisine ? Color.blue : Color(.secondarySystemBackground)) }
                                 }
                             }
                         }
