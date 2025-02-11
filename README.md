@@ -1,13 +1,18 @@
 ### Summary: Include screenshots or a video of your app highlighting its features
 
-_init(networkService: NetworkServiceProtocol = MockNetworkService(jsonType: .success)) { }_
+## RecipeView - JSON Response Testing
 
-Filtered View
+### RecipeView
+![RecipeView](https://github.com/user-attachments/assets/b42d5af5-bdde-44b7-8682-06b6f8d4d0b7)
 
-_init(networkService: NetworkServiceProtocol = MockNetworkService(jsonType: .malformed)) { }_
+### RecipeView - Filtered By Cusine
+![Filtered - RecipeView](https://github.com/user-attachments/assets/aeb5c7f9-9525-4206-8139-0658d898e19c)
 
-![Empty-JSON-RecipeView](https://github.com/user-attachments/assets/08b9d953-26c4-4d0e-9382-fd8656529c21)
-_init(networkService: NetworkServiceProtocol = MockNetworkService(jsonType: .empty)) { }_
+### RecipeView - Malformed JSON
+![Malformed-JSON-RecipeView](https://github.com/user-attachments/assets/90d2af50-b9be-4428-b688-66e884925edf)
+
+### RecipeView - Empty JSON
+![Empty-JSON-RecipeView](https://github.com/user-attachments/assets/7c30ac47-a639-4276-8de7-2fb0e25313db)
 
 ### Focus Areas: What specific areas of the project did you prioritize? Why did you choose to focus on these areas?
 I focused on NetworkService and Image Caching because they are critical to the app’s functionality. Without reliable data fetching and efficient caching, the user experience would suffer regardless of how well the UI is designed. Ensuring smooth network requests, proper error handling, and optimized image loading improves performance and keeps the app responsive.
