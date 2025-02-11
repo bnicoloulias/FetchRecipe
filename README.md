@@ -1,14 +1,12 @@
 ### Summary: Include screenshots or a video of your app highlighting its features
-![RecipeView](https://github.com/user-attachments/assets/27f7c929-9b92-48f2-86e9-d268b0c68874)
+
 _init(networkService: NetworkServiceProtocol = MockNetworkService(jsonType: .success)) { }_
 
-![Filtered - RecipeView](https://github.com/user-attachments/assets/ef33bca2-363d-412a-a515-88909302045f)
 Filtered View
 
-![Malformed-JSON-RecipeView](https://github.com/user-attachments/assets/cf5d8806-651c-4191-9a9f-bf66cae194a7)
 _init(networkService: NetworkServiceProtocol = MockNetworkService(jsonType: .malformed)) { }_
 
-![Empty-JSON-RecipeView](https://github.com/user-attachments/assets/5c0b36d4-ce01-4bfc-9988-96d7c4d1e473)
+![Empty-JSON-RecipeView](https://github.com/user-attachments/assets/08b9d953-26c4-4d0e-9382-fd8656529c21)
 _init(networkService: NetworkServiceProtocol = MockNetworkService(jsonType: .empty)) { }_
 
 ### Focus Areas: What specific areas of the project did you prioritize? Why did you choose to focus on these areas?
